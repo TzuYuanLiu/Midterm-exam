@@ -64,7 +64,7 @@ class PostsController < ApplicationController
       flash[:alert] = "No-Access-Delete-Allow" 
       redirect_to :root
     else
-      flash[:alert] = "Post was successfully deleted"
+      flash[:notice] = "Post was successfully deleted"
       @post.destroy
       redirect_to :root
     end  

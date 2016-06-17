@@ -57,7 +57,7 @@ before_action :set_post
       end
       @post.save
 
-      flash[:alert] = "Comment was successfully deleted"
+      flash[:notice] = "Comment was successfully deleted"
 
       redirect_to post_path(@post)
 		end
