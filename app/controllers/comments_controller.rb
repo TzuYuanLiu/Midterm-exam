@@ -16,6 +16,10 @@ before_action :set_post
 		end
 	end
 
+	def new
+	
+	end
+
 	def edit
 		if @post.user != current_user
 			flash[:alert] = "No-Access-Edit-Allow"

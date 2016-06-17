@@ -5,9 +5,6 @@ class PostsController < ApplicationController
 
 
   def index
-
-
-
       if params[:order] == "last_comment_time"
         @posts = Post.page( params[:page]).per(4).order("last_comment_time desc")
       elsif params[:order] && params[:order] == "comment_count"
@@ -17,10 +14,6 @@ class PostsController < ApplicationController
       else
         @posts = Post.page( params[:page]).per(4).order(":created_at desc")
       end
-    
-
-
-  	
   end	
 
   def new
@@ -41,6 +34,7 @@ class PostsController < ApplicationController
  
   def show
     @comment = Comment.new
+
   end
 
   def edit

@@ -1,27 +1,25 @@
 <h1>
-<%= @post.title %>
+	<%= @post.title %>
 </h1>
 
 <hr>
 
 <% if @post.category_id %>
-<p>Category: <%= @post.category.name %><p>
+	<p>Category: <%= @post.category.name %><p>
 <% end %>
 
 <% if @post.location %>
-<p>
-Location:
-<%= @post.location %>
-</p>
-<hr>
+	<p>
+		Location:
+		<%= @post.location %>
+	</p>
+	<hr>
 <% end %>
 
-
-
-
 <p>
-<%= simple_format @post.content %>
+	<%= simple_format @post.content %>
 </p>
+
 <hr>
 
 <!-- comment -->
@@ -35,8 +33,9 @@ Location:
 	
 <% @post.comments.each do |c| %>
 <p>
-comment by
-<%= @post.user.short_name %>
+	comment by
+	<%= @post.user.short_name %>
+	
 </p>
 	<%= c.comment %>	
 
