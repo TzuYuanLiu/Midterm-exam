@@ -4,6 +4,17 @@
 
 <hr>
 
+<% if @post.location %>
+<p>
+Location:
+<%= @post.location %>
+</p>
+<hr>
+<% end %>
+
+
+
+
 <p>
 <%= simple_format @post.content %>
 </p>

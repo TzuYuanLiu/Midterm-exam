@@ -1,7 +1,8 @@
 
 <div class="pull-right">
 <%= link_to "Order by last comment", posts_path(:order => "last_comment_time") %> ｜
-<%= link_to "Order by most comment", posts_path(:order => "comment_number") %>
+<%= link_to "Order by most comment", posts_path(:order => "comment_number") %> ｜
+
 </div>
 
 <div class="clearfix"></div>
@@ -29,8 +30,8 @@
 	<hr>
 			
 <% end %>
-
-	<%= link_to "new post", new_post_path, :class => "btn btn-default"  %>
+<%= link_to "create a new post!", new_post_path, :class => "btn btn-default"  %>
+	
 
 	<%= paginate @posts %>
 	
