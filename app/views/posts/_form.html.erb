@@ -1,3 +1,10 @@
+<hr>
+<p>
+Your post belongs to:  
+<%= f.collection_select(:category_id, Category.all, :id, :name, :class => "form-control") %> 
+</p>
+<br>
+
 <div class="form-group">
 <%= f.label :title, "Title" %>
 <%= f.text_field :title, :class => "form-control" %>

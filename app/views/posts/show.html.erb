@@ -4,6 +4,10 @@
 
 <hr>
 
+<% if @post.category_id %>
+<p>Category: <%= @post.category.name %><p>
+<% end %>
+
 <% if @post.location %>
 <p>
 Location:

@@ -15,7 +15,7 @@ class PostsController < ApplicationController
       elsif params[:order] && params[:order] == "topic_clicks"
         @posts = Post.page( params[:page]).per(4).order("clicked desc")
       else
-        @posts = Post.page( params[:page]).per(4).order(":id desc")
+        @posts = Post.page( params[:page]).per(4).order(":created_at desc")
       end
     
 
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-  	params.require(:post).permit(:title, :content, :location)
+  	params.require(:post).permit(:title, :content, :location, :category_id)
   end
 
 end
