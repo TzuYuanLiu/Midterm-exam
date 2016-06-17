@@ -21,7 +21,7 @@
 <% @post.comments.each do |c| %>
 <p>
 comment by
-<%= current_user.short_name %>
+<%= @post.user.short_name %>
 </p>
 	<%= c.comment %>	
 
@@ -31,12 +31,11 @@ comment by
 <% end %>
 
 <%= form_for @comment , :url => post_comments_path(@post, @comment)  do |f| %>
-	
-	<div class="form-group">
-		<%= f.label :comment, "Comment" %>
-		<%= f.text_area :comment, :class => "form-control" %>
-	</div>
-		<%= f.submit %>	
+<%= render :partial => 'comment_form', :locals => {:f => f } %>
+
+<p>
+<%= f.submit "create", :class => "btn btn-primary" %>
+</p>	
 	
 <% end %>
 

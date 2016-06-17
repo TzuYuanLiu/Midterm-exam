@@ -1,30 +1,38 @@
 
+<div class="pull-right">
+<%= link_to "Order by last comment", posts_path(:order => "last_comment_time") %> ｜
+<%= link_to "Order by most comment", posts_path(:order => "comment_number") %>
+</div>
 
-		<% @posts.each do |p| %>
-					<h1>
-						<%= link_to p.title, post_path(p) %>
-					</h1>
+<div class="clearfix"></div>
 
-					<p>
-					Published at
-					<%= time_ago_in_words(p.created_at) %>
-					ago
-					by
-					<%= p.user.try(:short_name) %>
-					</p>
+<% @posts.each do |p| %>
+	<h1>
+		<%= link_to p.title, post_path(p) %>
+	</h1>
 
-					
-					<% if current_user %>
-					<p>
-					<%= link_to 'edit', edit_post_path(p), :class => "btn btn-default" %>
-					<%= link_to 'delete', post_path(p), :method => :delete, :class => "btn btn-default" %>
-					</p>
-					<% end %>
-					<hr>
-					
-		<% end %>
 
-		<%= link_to "new post", new_post_path, :class => "btn btn-default"  %>
+	<p>
+	Published at
+	<%= time_ago_in_words(p.created_at) %>
+	ago
+	by
+	<%= p.user.try(:short_name) %>
+	</p>
+	
+	<% if current_user %>
+	<p>
+	<%= link_to 'edit', edit_post_path(p), :class => "btn btn-default" %>
+	<%= link_to 'delete', post_path(p), :method => :delete, :class => "btn btn-default" %>
+	</p>
+	<% end %>
+	<hr>
+			
+<% end %>
+
+	<%= link_to "new post", new_post_path, :class => "btn btn-default"  %>
+
+	<%= paginate @posts %>
 	
 	
 

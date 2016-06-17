@@ -8,6 +8,8 @@ before_action :set_post
 		@comment.save
 
 		if @comment.save
+      @post.last_comment_time = @comment.updated_at
+      @post.save
 			redirect_to post_path(@post)
 		else
 			render 'new'
@@ -15,8 +17,9 @@ before_action :set_post
 	end
 
 	def edit
-		unless @post.user == current_user
+		if @post.user != current_user
 			flash[:alert] = "No-Access-Edit-Allow"
+			redirect_to post_path(@post)
 		else
 			@comment = @post.comments.find(params[:id])
 			
@@ -26,10 +29,14 @@ before_action :set_post
 	def update
 		@comment = @post.comments.find(params[:id])
 
-		if @comment.update(params[:comment].permit(:comment))
-			redirect_to post_path(@post)
+		if @comment.update(comment_param)
+			@post.last_comment_time = @comment.updated_at
+			@post.save
+
+			redirect_to :root
 		else
-			render 'edit'
+
+			render post_path(@post)
 		end
 	end
 

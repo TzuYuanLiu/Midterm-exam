@@ -5,7 +5,22 @@ class PostsController < ApplicationController
 
 
   def index
-  	@posts = Post.all.order("created_at DESC")
+
+
+
+      if params[:order] == "last_comment_time"
+        @posts = Post.page( params[:page]).per(4).order("last_comment_time desc")
+      elsif params[:order] && params[:order] == "comment_count"
+        @posts = Post.page( params[:page]).per(4).order("comments_count desc")
+      elsif params[:order] && params[:order] == "topic_clicks"
+        @posts = Post.page( params[:page]).per(4).order("clicked desc")
+      else
+        @posts = Post.page( params[:page]).per(4).order(":id desc")
+      end
+    
+
+
+  	
   end	
 
   def new

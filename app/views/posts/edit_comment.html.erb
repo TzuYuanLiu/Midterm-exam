@@ -1,0 +1,16 @@
+<h1>Edit Comment</h1>
+
+<%= form_for @comment, :url => edit_post_comment_path(@topic, @comment)  do |f| %>
+
+<%= render :partial => 'comment_form', :locals => {:f => f } %>
+
+<p>
+<%= f.submit "update", :class => "btn btn-primary"  %>
+</p>
+
+
+<% end %>
+
+<p>
+<%= link_to "index", posts_path %>
+</p>
